@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* rgb(29, 40, 41) */
+
+/* Main Body Items */
+header {
+  background-color: blanchedalmond;
+  padding: 1em;
+  text-align: center;
+}
+
+body {
+  background: darkslategray;
+}
+
+/* Scoreboard Items */
+.scoreboard {
+  width: 300px;
+  border: blanchedalmond 3px solid;
+  margin: 30px auto;
+  padding: 15px 20px;
+  color: blanchedalmond;
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+  border-radius: 5px;
+
+}
+
+.badge {
+  background: olivedrab;
+  padding: 5px;
+  border: 1px olivedrab solid;
+  border-radius: 5px;
+}
+
+#user-label {
+  position: absolute;
+  left: -25px;
+  top: 10px;
+  font-size: 15px;
+}
+
+#computer-label {
+  position: absolute;
+  right: -45px;
+  top: 10px;
+  font-size: 15px;
+}
+
+.resetter {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#reset {
+  font-size: 25px;
+}
+
+/* Message */
+.announcement > p {
+  text-align: center;
+  color: blanchedalmond;
+  font-size: 46px;
+  transition: all 0.3s ease;
+  height: 200px;
+}
+
+.choice-display {
+  color: blanchedalmond;
+  position: relative;
+  font-size: 20px;
+  margin-bottom: 100px;
+  text-align: center;
+
+
+}
+
+#user-display {
+  border: 2px solid blanchedalmond;
+  position: absolute;
+  left: 50px;
+  padding: 15px;
+}
+
+#comp-display {
+  border: 2px solid blanchedalmond;
+  position: absolute;
+  right: 50px;
+  padding: 15px;
+}
+
+
+
+#w-l {
+  font-weight: bold;
+}
+
+/* Choices */
+.choices {
+  text-align: center;
+}
+
+.choice {
+  border: 2px blanchedalmond solid;
+  display: inline-block;
+  color: blanchedalmond;
+  margin: 80px 20px;
+  width: 200px;
+  font-size: 25px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.choice:hover {
+  cursor: pointer;
+  background: blanchedalmond;
+  color: rgb(29, 40, 41);
+  
+}
+
+.message > p {
+  text-align: center;
+  color: blanchedalmond;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#reset {
+  width: 100px;
+}
+
+#reset:hover {
+  color: rgb(230, 90, 90);
+}
