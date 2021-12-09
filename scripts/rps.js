@@ -6,38 +6,58 @@ let computerScore = 0;
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
 const scoreBoard_div = document.querySelector(".score-board");
+
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
-const reset_div = document.getElementById("reset")
-
 const scissors_div = document.getElementById("s");
+
+const reset_div = document.getElementById("reset")
 const win_lose_span = document.getElementById("w-l");
 
+const userDisplay_span = document.getElementById("user-choice");
+const compDisplay_span = document.getElementById("comp-choice");
 
+
+
+// random number generator to get computer choice
 function getComputerChoice() {
   const compChoice = ['r','p','s'];
   return compChoice[Math.floor(Math.random()*3)];
 }
 
+// rps winner
 function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-
   win_lose_span.innerHTML = wordConverter(userChoice) + " beats " + wordConverter(computerChoice) + ". You Win!";
+  choiceDisplay(userChoice, computerChoice)
 }
 
+// rps loser
 function lose(userChoice, computerChoice) {
   computerScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
   win_lose_span.innerHTML = wordConverter(computerChoice) + " beats " + wordConverter(userChoice) + ". You Lose!";
+  choiceDisplay(userChoice, computerChoice)
 }
 
+// rps tie
 function tie(userChoice, computerChoice) {
   win_lose_span.innerHTML = wordConverter(userChoice) + " is the same as " + wordConverter(computerChoice) + ". Its a Tie!";
+  choiceDisplay(userChoice, computerChoice)
 }
 
+// display user and computer choices
+function choiceDisplay (userChoice, computerChoice) {
+  userDisplay_span.innerHTML = wordConverter(userChoice);
+  compDisplay_span.innerHTML = wordConverter(computerChoice);
+} 
+
+
+
+// convert single letter choice to word
 function wordConverter(word) {
   if (word == "r") 
     return "Rock";
@@ -49,15 +69,17 @@ function wordConverter(word) {
     return "Scissors";
 }
 
-
-
+// reset score button
 function resetter () {
   userScore = 0;
   computerScore = 0;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
+  userDisplay_span.innerHTML = " ";
+  compDisplay_span.innerHTML = " ";
 }
 
+// game logic
 function game(userChoice) {
   const computerChoice = getComputerChoice();
   switch (userChoice + computerChoice){
@@ -80,6 +102,8 @@ function game(userChoice) {
       break;
   }
 }
+
+
 
 
 function main(){
