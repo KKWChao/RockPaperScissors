@@ -42,17 +42,18 @@ body {
 #user-label {
   position: absolute;
   left: -25px;
-  top: 10px;
+  top: 25px;
   font-size: 15px;
 }
 
 #computer-label {
   position: absolute;
   right: -45px;
-  top: 10px;
+  top: 25px;
   font-size: 15px;
 }
 
+/* reset stuff */
 .resetter {
   text-align: center;
   margin-top: 10px;
@@ -68,14 +69,30 @@ body {
   color: blanchedalmond;
   font-size: 46px;
   transition: all 0.3s ease;
-  height: 200px;
+  height: 150px;
+}
+
+/* gif display */
+
+#w-l-container {
+  text-align: center;
+  height: 100px;
+  transition: all 0.2s ease;
+}
+
+#w-l-gif {
+  display: inline-block;
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+  opacity: 0.8;
 }
 
 .choice-display {
   color: blanchedalmond;
   position: relative;
   font-size: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
   text-align: center;
 }
 
@@ -99,6 +116,7 @@ body {
 
 .choicer {
   font-weight: bold;
+  
 }
 
 #w-l {
@@ -114,18 +132,28 @@ body {
   border: 2px blanchedalmond solid;
   display: inline-block;
   color: blanchedalmond;
-  margin: 80px 20px;
-  width: 200px;
+  margin: 20px;
   font-size: 25px;
   transition: all 0.3s ease;
   border-radius: 5px;
+
 }
 
 .choice:hover {
   cursor: pointer;
   background: blanchedalmond;
   color: rgb(29, 40, 41);
-  
+}
+
+.choice:active {
+  background:rgb(230, 90, 90);
+  transform: rotate(-10deg);
+}
+
+.choice-img {
+  width: 100px;
+  height: 90px;
+  padding: 10px;
 }
 
 .message > p {

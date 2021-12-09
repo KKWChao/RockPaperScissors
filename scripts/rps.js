@@ -17,7 +17,14 @@ const win_lose_span = document.getElementById("w-l");
 const userDisplay_span = document.getElementById("user-choice");
 const compDisplay_span = document.getElementById("comp-choice");
 
+let w_l_gif_img = document.getElementById("w-l-gif");
 
+
+// display user and computer choices
+function choiceDisplay (userChoice, computerChoice) {
+  userDisplay_span.innerHTML = wordConverter(userChoice);
+  compDisplay_span.innerHTML = wordConverter(computerChoice);
+} 
 
 // random number generator to get computer choice
 function getComputerChoice() {
@@ -30,8 +37,9 @@ function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  win_lose_span.innerHTML = wordConverter(userChoice) + " beats " + wordConverter(computerChoice) + ". You Win!";
+  win_lose_span.innerHTML = `${wordConverter(userChoice)} beats ${wordConverter(computerChoice)}. You Win!`;
   choiceDisplay(userChoice, computerChoice)
+  w_l_gif_img.src = "../RockPaperScissors/images/winner.gif";
 }
 
 // rps loser
@@ -39,21 +47,17 @@ function lose(userChoice, computerChoice) {
   computerScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  win_lose_span.innerHTML = wordConverter(computerChoice) + " beats " + wordConverter(userChoice) + ". You Lose!";
+  win_lose_span.innerHTML = `${wordConverter(computerChoice)} beats ${wordConverter(userChoice)}. You Lose!`;
   choiceDisplay(userChoice, computerChoice)
+  w_l_gif_img.src = "../RockPaperScissors/images/loser.gif";
 }
 
 // rps tie
 function tie(userChoice, computerChoice) {
-  win_lose_span.innerHTML = wordConverter(userChoice) + " is the same as " + wordConverter(computerChoice) + ". Its a Tie!";
-  choiceDisplay(userChoice, computerChoice)
+  win_lose_span.innerHTML = `${wordConverter(userChoice)} is the same as ${wordConverter(computerChoice)}. Its a Tie!`;
+  choiceDisplay(userChoice, computerChoice);
+  w_l_gif_img.src = "../RockPaperScissors/images/thinking.gif";
 }
-
-// display user and computer choices
-function choiceDisplay (userChoice, computerChoice) {
-  userDisplay_span.innerHTML = wordConverter(userChoice);
-  compDisplay_span.innerHTML = wordConverter(computerChoice);
-} 
 
 
 
@@ -77,6 +81,7 @@ function resetter () {
   computerScore_span.innerHTML = computerScore;
   userDisplay_span.innerHTML = " ";
   compDisplay_span.innerHTML = " ";
+  win_lose_span.innerHTML = " ";
 }
 
 // game logic
