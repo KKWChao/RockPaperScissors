@@ -13,18 +13,22 @@
     <h1>Let's Play Rock Paper Scissors!</h1>
   </header>
 
+  <!-- new for winner/loser style -->
   <div class="scoreboard">
     <div id="user-label" class="badge">User</div>
     <div id="computer-label" class="badge">Computer</div>
-    <span id="user-score">0</span>:<span id="computer-score">0</span>
+    <span id="user-score">0</span> : <span id="computer-score">0</span>
   </div>
 
+
+  <!-- change announcement for winner of 5 games -->
+  
   <div class="announcement">
-    <p><span id="w-l"></span></p>
-    <div id="w-l-container"><img id="w-l-gif" src="../RockPaperScissors/images/thinking.gif" alt="status-display"></div>
+    <p id="w-l-container"><span id="w-l"></span></p>
     <div class="choice-display">
       <div id="user-display"><p><span class="choicer">Your Choice:</span><br><span id="user-choice"></span></p></div>
-      <div id="comp-display"><p><span class="choicer">Computer Choice:</span><br><span id="comp-choice"></span></p></div>
+      <div id="comp-display"><p><span class="choicer">Comp Choice:</span><br><span id="comp-choice"></span></p></div>
+      <div id="w-l-container"><img id="w-l-gif" src="../RockPaperScissors/images/thinking.gif" alt="status-display"></div>
     </div>
   </div>
 
@@ -41,6 +45,8 @@
   <div class="resetter">
     <div class="choice" id="reset">Reset</button>
   </div>
+
+  
 
 <script src="./scripts/rps.js" charset="utf-8"></script>
 </body>

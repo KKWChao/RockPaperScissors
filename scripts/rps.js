@@ -14,23 +14,28 @@ const scissors_div = document.getElementById("s");
 const reset_div = document.getElementById("reset")
 const win_lose_span = document.getElementById("w-l");
 
+const game_announce_p = document.getElementById('game-announce');
+
 const userDisplay_span = document.getElementById("user-choice");
 const compDisplay_span = document.getElementById("comp-choice");
 
 let w_l_gif_img = document.getElementById("w-l-gif");
 
 
+
+
 // display user and computer choices
 function choiceDisplay (userChoice, computerChoice) {
   userDisplay_span.innerHTML = wordConverter(userChoice);
   compDisplay_span.innerHTML = wordConverter(computerChoice);
-} 
+}; 
 
 // random number generator to get computer choice
 function getComputerChoice() {
   const compChoice = ['r','p','s'];
   return compChoice[Math.floor(Math.random()*3)];
-}
+};
+
 
 // rps winner
 function win(userChoice, computerChoice) {
@@ -38,9 +43,9 @@ function win(userChoice, computerChoice) {
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
   win_lose_span.innerHTML = `${wordConverter(userChoice)} beats ${wordConverter(computerChoice)}. You Win!`;
-  choiceDisplay(userChoice, computerChoice)
+  choiceDisplay(userChoice, computerChoice);
   w_l_gif_img.src = "../RockPaperScissors/images/winner.gif";
-}
+};
 
 // rps loser
 function lose(userChoice, computerChoice) {
@@ -48,16 +53,16 @@ function lose(userChoice, computerChoice) {
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
   win_lose_span.innerHTML = `${wordConverter(computerChoice)} beats ${wordConverter(userChoice)}. You Lose!`;
-  choiceDisplay(userChoice, computerChoice)
+  choiceDisplay(userChoice, computerChoice);
   w_l_gif_img.src = "../RockPaperScissors/images/loser.gif";
-}
+};
 
 // rps tie
 function tie(userChoice, computerChoice) {
   win_lose_span.innerHTML = `${wordConverter(userChoice)} is the same as ${wordConverter(computerChoice)}. Its a Tie!`;
   choiceDisplay(userChoice, computerChoice);
   w_l_gif_img.src = "../RockPaperScissors/images/thinking.gif";
-}
+};
 
 
 
@@ -71,7 +76,7 @@ function wordConverter(word) {
 
   else 
     return "Scissors";
-}
+};
 
 // reset score button
 function resetter () {
@@ -82,7 +87,20 @@ function resetter () {
   userDisplay_span.innerHTML = " ";
   compDisplay_span.innerHTML = " ";
   win_lose_span.innerHTML = " ";
+};
+
+// score of 5 = endgame + reset
+function endGame(userScore, computerScore) {
+  if (userScore >= 5) {
+    win_lose_span
+    window.alert("\tYou Win!\n\tGame Over!");
+    resetter();
+  } else if (computerScore >= 5) {
+    window.alert("You Lose!\nGame Over!");
+    resetter();
+  }
 }
+
 
 // game logic
 function game(userChoice) {
@@ -92,45 +110,46 @@ function game(userChoice) {
     case "pr":
     case "sp":
       win(userChoice, computerChoice);
+      endGame(userScore_span.innerText, computerScore_span.innerText)
       break;
     
     case "sr":
     case "rp":
     case "ps":
       lose(userChoice, computerChoice);
+      endGame(userScore_span.innerText, computerScore_span.innerText)
       break;
     
     case "rr":
     case "ss":
     case "pp":
       tie(userChoice, computerChoice);
+      endGame(userScore_span.innerText, computerScore_span.innerText)
       break;
-  }
-}
+  };
+};
 
 
 
 
 function main(){
 
-  reset_div.addEventListener('click', function() {
+  reset_div.addEventListener('click', () => {
     resetter();
   })
 
-  rock_div.addEventListener('click', function() {
+  rock_div.addEventListener('click', () => {
     game('r');
   })
   
-  paper_div.addEventListener('click', function() {
+  paper_div.addEventListener('click', () => {
     game('p');
   })
 
-  scissors_div.addEventListener('click', function() {
+  scissors_div.addEventListener('click', () => {
     game('s');
   })
-
-  
 }
 
 
-main()
+main();
