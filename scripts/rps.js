@@ -16,24 +16,42 @@ const win_lose_span = document.getElementById("w-l");
 
 const game_announce_p = document.getElementById('game-announce');
 
-const userDisplay_span = document.getElementById("user-choice");
-const compDisplay_span = document.getElementById("comp-choice");
+const userDisplay_img = document.getElementById("user-choice");
+const compDisplay_img = document.getElementById("comp-choice");
 
-let w_l_gif_img = document.getElementById("w-l-gif");
-
-
+const w_l_gif_img = document.getElementById("w-l-gif");
 
 
-// display user and computer choices
-function choiceDisplay (userChoice, computerChoice) {
-  userDisplay_span.innerHTML = wordConverter(userChoice);
-  compDisplay_span.innerHTML = wordConverter(computerChoice);
-}; 
+
+
+// small functions to update userChoice with image
+function userRock() {
+  userDisplay_img.src = "./images/rock.png";
+}
+
+function userPaper() {
+  userDisplay_img.src = "./images/paper.png";
+}
+
+function userScissors() {
+  userDisplay_img.src = "./images/scissors.png";
+}
+
+
 
 // random number generator to get computer choice
 function getComputerChoice() {
   const compChoice = ['r','p','s'];
-  return compChoice[Math.floor(Math.random()*3)];
+  let x = compChoice[Math.floor(Math.random()*3)];
+
+  if (x==="r") {
+    compDisplay_img.src = "./images/rock.png";
+  } else if (x==="p") {
+    compDisplay_img.src = "./images/paper.png";
+  } else if (x==="s") {
+    compDisplay_img.src = "./images/scissors.png";
+  }
+  return x
 };
 
 
@@ -42,8 +60,7 @@ function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  win_lose_span.innerHTML = `${wordConverter(userChoice)} beats ${wordConverter(computerChoice)}. You Win!`;
-  choiceDisplay(userChoice, computerChoice);
+  win_lose_span.innerHTML = `${wordConverter(userChoice)} beats ${wordConverter(computerChoice)}.<br> You Win!`;
   w_l_gif_img.src = "../RockPaperScissors/images/winner.gif";
 };
 
@@ -52,15 +69,13 @@ function lose(userChoice, computerChoice) {
   computerScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  win_lose_span.innerHTML = `${wordConverter(computerChoice)} beats ${wordConverter(userChoice)}. You Lose!`;
-  choiceDisplay(userChoice, computerChoice);
+  win_lose_span.innerHTML = `${wordConverter(computerChoice)} beats ${wordConverter(userChoice)}.<br> You Lose!`;
   w_l_gif_img.src = "../RockPaperScissors/images/loser.gif";
 };
 
 // rps tie
 function tie(userChoice, computerChoice) {
-  win_lose_span.innerHTML = `${wordConverter(userChoice)} is the same as ${wordConverter(computerChoice)}. Its a Tie!`;
-  choiceDisplay(userChoice, computerChoice);
+  win_lose_span.innerHTML = `${wordConverter(userChoice)} is the same as ${wordConverter(computerChoice)}.<br> Its a Tie!`;
   w_l_gif_img.src = "../RockPaperScissors/images/thinking.gif";
 };
 
@@ -80,13 +95,16 @@ function wordConverter(word) {
 
 // reset score button
 function resetter () {
-  userScore = 0;
-  computerScore = 0;
-  userScore_span.innerHTML = userScore;
-  computerScore_span.innerHTML = computerScore;
-  userDisplay_span.innerHTML = " ";
-  compDisplay_span.innerHTML = " ";
-  win_lose_span.innerHTML = " ";
+  // userScore = 0;
+  // computerScore = 0;
+  // userScore_span.innerHTML = userScore;
+  // computerScore_span.innerHTML = computerScore;
+  // userDisplay_span.innerHTML = " ";
+  // compDisplay_span.innerHTML = " ";
+  // win_lose_span.innerHTML = " ";
+  // w_l_gif_img.src = "";
+
+  window.location.reload()
 };
 
 // score of 5 = endgame + reset
@@ -110,7 +128,7 @@ function game(userChoice) {
     case "pr":
     case "sp":
       win(userChoice, computerChoice);
-      endGame(userScore_span.innerText, computerScore_span.innerText)
+      endGame(userScore_span.innerText, computerScore_span.innerText);
       break;
     
     case "sr":
@@ -129,9 +147,14 @@ function game(userChoice) {
   };
 };
 
+// Transitions
 
 
 
+
+
+
+// Main Function
 function main(){
 
   reset_div.addEventListener('click', () => {
@@ -140,14 +163,17 @@ function main(){
 
   rock_div.addEventListener('click', () => {
     game('r');
+    userRock();
   })
   
   paper_div.addEventListener('click', () => {
     game('p');
+    userPaper();
   })
 
   scissors_div.addEventListener('click', () => {
     game('s');
+    userScissors();
   })
 }
 
