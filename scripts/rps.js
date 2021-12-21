@@ -22,7 +22,7 @@ const compDisplay_img = document.getElementById("comp-choice");
 const w_l_gif_img = document.getElementById("w-l-gif");
 
 
-
+// Need to figure out way for image transition without directly changing src?
 
 // small functions to update userChoice with image
 function userRock() {
